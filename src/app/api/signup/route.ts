@@ -6,7 +6,7 @@ import { sendEmail } from "../../../helpers/mailer";
 
 export async function POST (request :NextRequest){
    try {
-    const reqBody = request.body;
+    const reqBody = await request.json();
     const {username, email, password} = reqBody;
     console.log('request body ',reqBody);
     //validation
@@ -27,7 +27,7 @@ export async function POST (request :NextRequest){
     console.log('saved user : ',savedUser);
     await sendEmail({email,emailType : 'VERIFY', userId :savedUser._id});
  
-    return NextResponse.json({message :'User registered successfully',data : savedUser,status : 'successfull'}, { status:200});
+    return NextResponse.json({message :'User registered successfully',data : savedUser,status : 'successful'}, { status:200});
 
    } catch (error:unknown) {
     console.log('error in signup post ',error);
