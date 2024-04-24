@@ -13,13 +13,15 @@ export const sendEmail = async({email , emailType, userId}:any) =>{
           });
           const mailOptions = {
             from: 'abdul123@gmail.com', // sender address
-            to: "bar@example.com, baz@example.com", // list of receivers
-            subject: "Hello ✔", // Subject line
-            text: "Hello world?", // plain text body
+            to: email, // list of receivers
+            subject: emailType === 'VERIFY' ? 'Verify your email' : 'Reset Your Password', // Subject line
+            text: "Hello everyone , i'm a Software Engineer", // plain text body
             html: "<b>Hello world?</b>", // html body
           }
-          const info = await transporter.sendMail(mailOptions);
+          const mailResponse = await transporter.sendMail(mailOptions);
+
+          return mailResponse;
     } catch (error) {
-        
+        console.log('error in sending mail to '+email+' is '+error);
     }
 }
