@@ -13,9 +13,9 @@ export async function POST (request :NextRequest){
     console.log('request body ',reqBody);
     //validation
     const user = await User.findOne({email});
-    console.log('user ',user)
+    console.log('user ',user);
     if(user){
-        return NextResponse.json({error : 'User already exists'}, { status:400});
+        return NextResponse.json({error: 'User already exists'}, { status:400});
     }
 
     const salt = await bcryptjs.genSalt(10);
