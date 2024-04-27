@@ -14,6 +14,10 @@ const FormValidationWithoutYup = () => {
     email: "",
     password: ""
   });
+  const [load, setLoad] = useState(false);
+  const verifyHandler = () =>{
+      setLoad(true);
+  }
 
   const handleChange = (e:any) => {
     console.log(
@@ -73,6 +77,7 @@ const FormValidationWithoutYup = () => {
     e.preventDefault();
     const isValid = validateFormWithOutYup();
     if (isValid) {
+      setLoad(true);
       console.log("form is submitted ", formData);
     } else {
       console.log("Form Validation is Failed");
@@ -122,7 +127,7 @@ const FormValidationWithoutYup = () => {
             <Link href="/login" className=" link">Login</Link>
           </div>
           <button type="submit" className="submit" onClick={onSubmitHandler}>
-            SignUp
+          {load ? 'Loading...':'SignUp'}
           </button>
         </form>
       </div>
