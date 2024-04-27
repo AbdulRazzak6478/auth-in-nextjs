@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-/.env
+.env
 
 /.pnp
 .pnp.js
@@ -36,6 +36,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-node_modules/
 .env
-tests/
+# node_modules/
+
